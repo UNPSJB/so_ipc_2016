@@ -1,2 +1,6 @@
 c/prog_a
 c/prog_b
+*.pyc
+*.o
+*DS_Store*
+*.gch

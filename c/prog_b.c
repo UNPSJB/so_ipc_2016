@@ -12,7 +12,6 @@ int main(int argc, char **argv)
 
     while(count-- > 0)
     {
-        strncpy(m.msg, "Hola que tal", 80);
         // Enviar el mensaje
         m.x = count;
         m.y = count +1;

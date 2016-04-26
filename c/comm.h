@@ -15,7 +15,7 @@ typedef struct {
     int id;
     int estado;
     /* Información extra */
-    char msg[80];
+    char imagen[80];
     int x;
     int y;
 } TMensaje;
