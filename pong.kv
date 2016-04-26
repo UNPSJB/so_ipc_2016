@@ -1,0 +1,34 @@
+<Ventana>:
+  BoxLayout:
+    orientation: 'vertical'
+    size: root.size
+    FloatLayout:
+      size_hint: 1, 0.8
+      id: vis
+      canvas:
+        Rectangle:
+          source: 'fondo.jpg'
+          size: self.size
+          pos: self.pos
+    BoxLayout:
+      size_hint: 1, 0.2
+      orientation: 'horizontal'
+      padding: 20
+      spacing: 20
+      Button:
+        text: "Agregar un coso"
+        on_press: app.agregar_coso()
+      Button:
+        text: "Me mureo"
+        on_press: app.morir()
+      Button:
+        text: "Compilar"
+        on_press: app.compilar()
+      Button:
+        text: "Proga A"
+        on_press: app.ejecutar('./c/prog_a')
+      Button:
+        text: "Proga B"
+        on_press: app.ejecutar('./c/prog_b')
+<Proceso@Image>
+  source: 'banana.gif'
