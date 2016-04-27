@@ -1,5 +1,6 @@
 # Ejemplo de visulización con Kivy
 
+Para referencia rápida [sobre Python, leer la carpeta docs](docs/Python.md).
 Ejemplo desarrollado el 25/4/2016 en clase a partir del ejemplo del [tutorial
 del kivy]():
 
