@@ -300,7 +300,12 @@ class CStruct(_CStructParent):
         for field in self.__fields__:
             (vtype, vlen) = self.__fields_types__[field]
             if vtype == 'char': # string
-                setattr(self, field, data[i])
+                a_string = data[i]
+                if a_string[0] == '\x00':
+                    a_string = ''
+                else:
+                    a_string = a_string.strip('\x00')
+                setattr(self, field, a_string)
                 i = i + 1
             elif isinstance(vtype, CStructMeta):
                 num = int(vlen / vtype.size)
