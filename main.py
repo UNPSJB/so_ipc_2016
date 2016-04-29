@@ -14,23 +14,27 @@ from kivy.uix.label import Label
 from kivy.factory import Factory
 from leer_struct import buscar_estructura
 from threading import Thread
+from kivy.properties import NumericProperty
 
 TMensaje = buscar_estructura(
     './c/comm.h',
     'TMensaje'
 )
+
 from twisted.internet import protocol, reactor
 
 class EscuchaC(protocol.Protocol):
+
     def __init__(self, app):
         self.app = app
+
     def datagramReceived(self, data, direccion):
-        print(len(data))
         m = TMensaje()
         m.unpack(data)
         self.app.llego_mensaje(m)
+        self.app.cant_mensajes = 0
 
-print TMensaje
+
 class Ventana(Widget):
     pass
 
@@ -38,6 +42,7 @@ class Ventana(Widget):
 class VisualApp(App):
 
     procesos = {}
+    cant_mensajes = NumericProperty(0)
 
     def build(self):
         reactor.listenUDP(2016, EscuchaC(self))
@@ -95,8 +100,10 @@ class VisualApp(App):
                 )
                 del self.procesos[m.pid]
 
-            proceso.x = m.x +  area_visualizacion.x
-            proceso.y = m.y +  area_visualizacion.y
-            proceso.source = m.imagen.strip('\x00')
+            proceso.x = m.x + area_visualizacion.x
+            proceso.y = m.y + area_visualizacion.y
+            if m.imagen:
+                proceso.source = m.imagen
+
 if __name__ == '__main__':
     VisualApp().run()
