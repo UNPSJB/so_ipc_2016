@@ -7,9 +7,12 @@ int main(int argc, char **argv)
 {
     TMensaje m;
     int count = 10;
+    sem_t *sem;
+
+    sem = sem_open("/sem_a", O_CREAT, 0600, 0);
 
     iniciar(argc, argv, &m);
-
+    sem_post(sem);
     while(count-- > 0)
     {
         // Enviar el mensaje

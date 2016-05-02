@@ -52,26 +52,23 @@ class VisualApp(App):
         area_visualizacion = self.root.ids.vis
         for pid, grafico in self.procesos.iteritems():
             try:
-                os.kill(pid, signal.SIGTERM)
+                os.kill(pid, signal.SIGKILL)
             except:
                 pass
             area_visualizacion.remove_widget(grafico)
             self.procesos = {}
+        subprocess.call('rm /dev/shm/sem.*', shell=True)
+
     def compilar(self):
         subprocess.call(
-            'gcc ./c/comm.c ./c/prog_a.c -o ./c/prog_a &&'
-            'gcc ./c/comm.c ./c/prog_b.c -o ./c/prog_b &&'
+            'gcc ./c/comm.c ./c/prog_a.c  -pthread -o ./c/prog_a &&'
+            'gcc ./c/comm.c ./c/prog_b.c  -pthread -o ./c/prog_b &&'
             'echo "Compilacion OK"', shell=True)
     def ejecutar(self, comando):
         hilo = Thread(target=subprocess.call,
         args=(comando,))
         hilo.start()
         #subprocess.call(comando)
-    def agregar_coso(self):
-        #import pdb; pdb.set_trace()
-        coso = Factory.Coso()
-        self.root.ids.vis.add_widget(coso,
-        )
 
     def llego_mensaje(self, m):
         '''

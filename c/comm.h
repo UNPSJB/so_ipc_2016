@@ -33,5 +33,8 @@ void iniciar(int argc, char **argv, TMensaje *m);
  *          que se esté simulando.
  */
 void enviar(TMensaje *m);
-
+#include <fcntl.h>           /* For O_* constants */
+#include <sys/stat.h>        /* For mode constants */
+#include <semaphore.h>
+#include <stdio.h>
 #endif
