@@ -63,6 +63,8 @@ class VisualApp(App):
         subprocess.call(
             'gcc ./c/comm.c ./c/prog_a.c  -pthread -o ./c/prog_a &&'
             'gcc ./c/comm.c ./c/prog_b.c  -pthread -o ./c/prog_b &&'
+            'gcc ./c/comm.c ./c/prog_c.c  -lrt -o ./c/prog_c &&'
+            'gcc ./c/comm.c ./c/prog_d.c  -lrt -o ./c/prog_d &&'
             'echo "Compilacion OK"', shell=True)
     def ejecutar(self, comando):
         hilo = Thread(target=subprocess.call,

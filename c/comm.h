@@ -37,4 +37,8 @@ void enviar(TMensaje *m);
 #include <sys/stat.h>        /* For mode constants */
 #include <semaphore.h>
 #include <stdio.h>
+// Esto es para el colas: prog_c y prog_d
+#include <mqueue.h>
+#include <errno.h>
+
 #endif
