@@ -1,0 +1,36 @@
+<Ventana>:
+    BoxLayout:
+        size: root.size
+        orientation: 'vertical'
+        GridLayout:
+            size_hint: (1, .2)
+            cols: 3
+            rows: 2
+            Label:
+                text: "Canitidad"
+            Slider:
+                id: slider
+                min:1
+                max: 50
+                step: 1
+            Label
+                text: "{}".format(int(slider.value))
+
+            Label:
+                text: "Radio"
+            Slider:
+                id: slider_radio
+                min:20
+                max: min(root.size) * .8
+                step: 1
+            Label:
+                text: "{}".format(int(slider_radio.value))
+        # En este widget se dibujan los circulos
+        Dibujo:
+            size_hint: (1, .8)
+            elementos: int(slider.value or 1)  # Evitar el ZeroDivisionError
+            radio: int(slider_radio.value or 1)
+
+<Emoji@Image>
+    source: "emoji.png"
+    size_hint: (.1, .1)
