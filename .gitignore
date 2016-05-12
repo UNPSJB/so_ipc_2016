@@ -1,5 +1,4 @@
-c/prog_a
-c/prog_b
+c/prog_*
 *.pyc
 *.o
 *DS_Store*
