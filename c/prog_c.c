@@ -39,7 +39,8 @@ int main(int argc, char **argv)
     m.y = 1;
     m.pid = getpid();
     enviar(&m);
-    mq_receive(cola, (char*) &buffer, attr.mq_msgsize, 0);
+    mq_receive(cola,
+        (char*) &buffer, attr.mq_msgsize, NULL);
     printf("No debería seguir!");
     while(count-- > 0)
     {
