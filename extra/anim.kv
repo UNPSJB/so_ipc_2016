@@ -1,0 +1,28 @@
+<AnimWidget>:
+    BoxLayout:
+        size: root.size
+        orientation: 'vertical'
+        Widget:
+            id: area_visualizacion
+            size_hint: 1, .8
+            canvas:
+                Color:
+                    rgba: .1, .2, .3, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+        BoxLayout:
+            size_hint: 1, .2
+            Button:
+                text: "Hola"
+            Button:
+                text: "Crear animacion"
+                on_press: app.crear_animacion()
+
+<Cuadradito@Image>:
+    color: 1, 0, 0, 1
+    canvas:
+        Color:
+            rgba: self.color
+        Rectangle:
+            size: 20, 20
